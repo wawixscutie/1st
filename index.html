@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keypress Reveal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000000;
+        }
+
+        #prompt-text {
+            font-size: 24px;
+            color: #f4efef;
+            transition: opacity 0.3s ease;
+        }
+
+        /* The container starts completely hidden */
+        #secret-content {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        #secret-image {
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        #secret-text {
+            font-size: 22px;
+            font-weight: bold;
+            color: #eae5e5;
+            margin-top: 15px;
+        }
+
+        /* Smooth fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="prompt-text">Press any key on your keyboard...</div>
+
+    <div id="secret-content">
+        <img id="secret-image" src="gavin-meme.gif" alt="Surprise Image">
+        <div id="secret-text">HEEEELLLLLLOOOOOOOOOOOOOO!</div>
+    </div>
+
+    <script>
+        // Listen for a keydown event anywhere on the page
+        window.addEventListener('keydown', function() {
+            const promptText = document.getElementById('prompt-text');
+            const secretContent = document.getElementById('secret-content');
+
+            // Hide the initial prompt
+            promptText.style.display = 'none';
+
+            // Reveal the image and text container
+            secretContent.style.display = 'block';
+        }, { once: true }); // "{ once: true }" ensures this only triggers on the first keypress
+    </script>
+
+</body>
+</html>
